@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @parcel.address %>
+</p>
+
+<p>
+  <strong>Address 2:</strong>
+  <%= @parcel.address_2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @parcel.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @parcel.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @parcel.zip %>
+</p>
+
+<p>
+  <strong>Neighborhood:</strong>
+  <%= @parcel.neighborhood %>
+</p>
+
+<p>
+  <strong>County:</strong>
+  <%= @parcel.county %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @parcel.name %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @parcel.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @parcel.longitude %>
+</p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @parcel.post_id %>
+</p>
+
+<%= link_to 'Edit', edit_parcel_path(@parcel) %> |
+<%= link_to 'Back', parcels_path %>

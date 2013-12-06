@@ -1,0 +1,55 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+$font-family-sans-serif:                         'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$body-bg: rgb(236, 240, 241);
+$navbar-inverse-bg: black;
+$navbar-inverse-link-color: rgb(189, 195, 199);
+$brand-primary: rgba(243, 156, 18,1.0);
+$jumbotron-bg: white;
+
+@import 'bootstrap';
+
+.center {
+        text-align: center;
+}
+
+.navbar-brand {
+        font-weight: bold;
+}
+
+.form-nav {
+        display: inline-block;
+        height: 34px;
+        padding: 6px 12px;
+        font-size: 14px;
+        line-height: 1.42857;
+        color: #555555;
+        vertical-align: middle;
+        background-color: white;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.nav .form-group {
+        margin: 5px;
+}
+#logs {
+        margin: 0 auto;
+}
+
+.box {
+        margin: 5px;
+        width: 214px;
+}
+
+.box img {
+        width: 100%;
+}
+
+#avatar {
+        padding: 5px;
+        width: 25%;
+
+}
