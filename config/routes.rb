@@ -1,10 +1,10 @@
 Parcelstory::Application.routes.draw do
-  root to: 'parcels#index'
+  root to: 'users#new'
 
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  get 'logout' => 'sessions#destroy'
-  get 'signup' => 'users#new'
+  get 'sessions/new'
+  post 'sessions/create'
+  get 'sessions/destroy'
+ 
 
   resources :users
 

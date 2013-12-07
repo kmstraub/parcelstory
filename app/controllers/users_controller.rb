@@ -6,12 +6,16 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    if current_user
+      redirect_to @user
+    else
     @user = User.new
+    end
   end
 
   # GET /users/1/edit
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -20,21 +24,19 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:success] = "Account created"
-      self.current_user = @user
-      redirect_to root_path
+      session[:user_id] = @user.id
+      redirect_to @user, notice: "Thank you for signing up for ParcelStory!"
     
     else
-      render :new
+      render 'new'
     end
   end
   def update
-    @user = current_user
-    if @user.save
-      flash[:success] = "Account updated"
-      redirect_to root_path
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to @user, notice: "Profile was successfully updated."
     else
-      render :new
+      render action: 'edit'
     end
   end
 
@@ -44,6 +46,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :username, :password_digest)
+      params.require(:user).permit(:first_name, :last_name, :email, :username, :password, :password_confirmation)
     end
 end
