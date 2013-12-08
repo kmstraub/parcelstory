@@ -11,12 +11,7 @@
       <th>Neighborhood</th>
       <th>County</th>
       <th>Name</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
-      <th>Post</th>
-      <th></th>
-      <th></th>
-      <th></th>
+
     </tr>
   </thead>
 
@@ -31,9 +26,7 @@
         <td><%= parcel.neighborhood %></td>
         <td><%= parcel.county %></td>
         <td><%= parcel.name %></td>
-        <td><%= parcel.latitude %></td>
-        <td><%= parcel.longitude %></td>
-        <td><%= parcel.post_id %></td>
+        
         <td><%= link_to 'Show', parcel %></td>
         <td><%= link_to 'Edit', edit_parcel_path(parcel) %></td>
         <td><%= link_to 'Destroy', parcel, method: :delete, data: { confirm: 'Are you sure?' } %></td>

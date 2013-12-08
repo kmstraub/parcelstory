@@ -7,8 +7,8 @@ class ParcelsController < ApplicationController
 
   def show
     @parcel = Parcel.find(params[:id])
-    @posts = Post.where(parcel_id: @parcel.id)
-    @post = Post.new
+    @posts = Post.where(parcel_id: params[:id])
+    @post = Post.new(parcel_id: params[:id])
   end
 
   # GET /parcels/new
@@ -18,12 +18,17 @@ class ParcelsController < ApplicationController
 
   def create
     @parcel = Parcel.new(parcel_params)
-    @parcel.user = current_user
+    @parcel.user_id = current_user.id
     if @parcel.save
-      redirect_to @parcel
+        redirect_to @parcel
     else
-      render :new
+        render :new
     end
+  end
+  def destroy
+    @parcel = Parcel.find(params[:id])
+    @parcel.destroy
+    redirect_to parcels_path
   end
 
 

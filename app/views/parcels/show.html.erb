@@ -1,59 +1,99 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @parcel.address %>
-</p>
 
-<p>
-  <strong>Address 2:</strong>
-  <%= @parcel.address_2 %>
-</p>
+<!--  start Google maps code -->
+<script type="text/javascript"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUt9keauvaYZOxOlddq6PLkSsuqbH-tn4&sensor=false">
+</script>
+<script type="text/javascript">
 
-<p>
-  <strong>City:</strong>
-  <%= @parcel.city %>
-</p>
 
-<p>
-  <strong>State:</strong>
-  <%= @parcel.state %>
-</p>
 
-<p>
-  <strong>Zip:</strong>
-  <%= @parcel.zip %>
-</p>
+  function initialize() {
+    var myLatLng = new google.maps.LatLng(<%= @parcel.latitude %>,<%= @parcel.longitude %>);
+    var mapOptions = {
+      center: myLatLng,
+      zoom: 20,
+      mapTypeId:google.maps.MapTypeId.HYBRID
+    };
 
-<p>
-  <strong>Neighborhood:</strong>
-  <%= @parcel.neighborhood %>
-</p>
+      var map = new google.maps.Map(document.getElementById("map-canvas"),
+      mapOptions);
 
-<p>
-  <strong>County:</strong>
-  <%= @parcel.county %>
-</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @parcel.name %>
-</p>
+  // To add the marker to the map, use the 'map' property
+    
+      var marker = new google.maps.Marker({
+       position: myLatLng,
+        map:map,
+         draggable: true,
+        animation:google.maps.Animation.DROP,
+      });
+      
+  }
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @parcel.latitude %>
-</p>
+      //  end of initialize
+      google.maps.event.addDomListener(window, 'load', initialize);
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @parcel.longitude %>
-</p>
+</script>
+<!-- end Google Maps code -->
 
-<p>
-  <strong>Post:</strong>
-  <%= @parcel.post_id %>
-</p>
+<% if current_user %>
+<div class="jumbotron">
+  <h2 class="center"> <%= @parcel.address %> <%= @parcel.address_2 %><br><%= @parcel.city %>, <%= @parcel.state %>  <%= @parcel.zip %><br>
+  <small><%= @parcel.neighborhood %></small></h2>
+  <div><%= link_to edit_parcel_path(@parcel) do %>
+    <span class="glyphicon glyphicon-pencil pull-right"></span>
+    <% end %>
+  </div>
+</div>
+   
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#details" data-toggle="tab">Details</a></li>
+  <li><a href="#posts" data-toggle="tab"><%= @parcel.posts.size %> Posts</a></li>
+  <li><a href="#followers" data-toggle="tab"> Followers</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="details">
+    <div id="map-canvas"></div>
+  </div>
+  <div class="tab-pane" id="posts">
+    <div id="posts" class="transitions-enabled">
+      <%= form_for @post, url: "/parcels/#{@parcel.id}/posts" do |f| %>
+      <div class="form-group">
+        <%= f.text_field :title, placeholder: "Do you have a story, comment or fact about this parcel? Add at title.", class: "form-control" %>
+      </div>
+      <div class="form-group">
+       <%= f.text_area :body, placeholder: "Do you have a story, comment or fact about this parcel? Add a description", class: "form-control" %>
+      </div>
+      <div class="form-group">
+         <%= f.text_field :source, placeholder: "What is the source of this post?", class: "form-control" %>
+      </div>
 
-<%= link_to 'Edit', edit_parcel_path(@parcel) %> |
-<%= link_to 'Back', parcels_path %>
+      <div class="form-group">
+       <%= f.submit "Add Post", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+      <% @posts.each do |post| %>
+      <div class="box panel panel-default">
+        <div class="panel-body">
+          <p><%= post.title %></p>
+          <p><%= post.body %></p>
+          <p><%= post.source %></p>
+          <p><a href="<%= user_path post.user %>">
+            <span class="name"><%= post.user.first_name %> <%= post.user.last_name %></span></a>
+            <span class="spacing"> @<%= post.user.username %></span>
+          </p>
+
+        </div>
+      </div>
+      <% end %>
+    </div>
+   </div>
+  <div class="tab-pane" id="followers">
+  </div>
+
+</div>
+<% end %>
+
+
+

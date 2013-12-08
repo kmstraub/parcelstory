@@ -1,13 +1,17 @@
 class PostsController < ApplicationController
  
   def create
-    parcel = Parcel.find(params[:parcel_id])
-    post = Post.new(post_params)
-    post.parcel = parcel
-    post.user = current_user
-    post.save!
+    @parcel = Parcel.find(params[:parcel_id])
+    @post = Post.new(post_params)
+    @post.parcel_id = @parcel.id
+    @post.user_id = current_user.id
+    if @post.save!
 
-    redirect_to parcel_path(parcel)
+    redirect_to parcel_path(@parcel), notice: "Post created"
+  else
+    flash[:error] = "Problem!"
+    redirect_to root_url
+    end
   end
     
   private

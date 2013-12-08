@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131205234524) do
+ActiveRecord::Schema.define(version: 20131207001841) do
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -36,13 +36,11 @@ ActiveRecord::Schema.define(version: 20131205234524) do
     t.string   "name"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "post_id",      null: false
     t.integer  "user_id",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "parcels", ["post_id"], name: "index_parcels_on_post_id"
   add_index "parcels", ["user_id"], name: "index_parcels_on_user_id"
 
   create_table "posts", force: true do |t|

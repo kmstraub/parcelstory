@@ -6,38 +6,58 @@
     <% end %>
   </div>
 </div>
-<ul class="nav nav-pills" id="myPill">
-  <li ><a href="#books" data-toggle="pill"></a></li>
-  <li><a href="#logs" data-toggle="pill"> </a></li>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#parcels" data-toggle="tab"><%= @user.parcels.size %> Parcels</a></li>
+  <li ><a href="#posts" data-toggle="tab"><%= @user.posts.size %> Posts</a></li>
+  <li><a href="#books" data-toggle="tab">Books</a></li>
 
-  <li><a href="#followers" data-toggle="pill"> Followers</a></li>
-  <li><a href="#following" data-toggle="pill">Following</a></li>
+  <li><a href="#followers" data-toggle="tab"> Followers</a></li>
+  <li><a href="#following" data-toggle="tab">Following</a></li>
 </ul>
-<div class="pill-content">
-  <div class="pill-pane active fade" id="books">
-    <div class="well">
-    </div>
-  </div>
-  <div class="pill-pane fade" id="logs">
-    <div id="logs" class="transitions-enabled">
-     
+<div class="tab-content">
+  <div class="tab-pane active" id="parcels">
+    <div id="parcels" class="transitions-enabled">
+     <% @user.parcels.each do |parcel| %>
       <div class="box panel panel-default">
         <div class="panel-body">
-          <p> </p>
-            <p><a href="<%= user_path  %>">
+          <p> <%= parcel.address %></p>
+          <p><%= parcel.address_2 %></p>
+          <p><%=parcel.city %></p>
+          <p><%=parcel.state %></p>
+          <p><%=parcel.zip %></p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="tab-pane" id="posts">
+    <div id="posts" class="transitions-enabled">
+     <% @user.posts.each do |post| %>
+      <div class="box panel panel-default">
+        <div class="panel-body">
+          <p> <%= post.title %></p>
+          <p><%= post.body %></p>
+          <p><%=post.source %></p>
+            <p><a href="<%= user_path  post.user %>">
             <span class="name"><%= @user.first_name %> <%= @user.last_name %></span></a>
             <span class="spacing"> @<%= @user.username %></span>
           </p>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
-  <div class="pill-pane fade" id="followers">
+  <div class="tab-pane" id="books">
+    <div class="well">
+    </div>
   </div>
-  <div class="pill-pane fade" id="following">
+  <div class="tab-pane" id="followers">
   </div>
-</div>
-<%= link_to 'Back', users_path %>
+  <div class="tab-pane" id="following">
+  </div>
 
-<% end %>
+</div>
+  <% end %>
+
 
