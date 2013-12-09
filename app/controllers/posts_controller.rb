@@ -7,13 +7,18 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save!
 
-    redirect_to parcel_path(@parcel), notice: "Post created"
+    redirect_to parcel_path(@parcel), notice: "Post created."
   else
     flash[:error] = "Problem!"
     redirect_to root_url
     end
   end
-    
+  def destroy
+    @parcel = Parcel.find(params[:parcel_id])
+    @post = @parcel.posts.find(params[:id])
+    @post.destroy
+    redirect_to root_url
+  end
   private
 
     # Never trust parameters from the scary internet, only allow the white list through.

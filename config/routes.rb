@@ -1,4 +1,8 @@
 Parcelstory::Application.routes.draw do
+ 
+
+  
+
   root to: 'users#new'
 
   get 'sessions/new'
@@ -14,6 +18,7 @@ Parcelstory::Application.routes.draw do
 
   resources :parcels do
     resources :posts
+    resources :events
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

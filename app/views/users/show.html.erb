@@ -7,49 +7,26 @@
   </div>
 </div>
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#parcels" data-toggle="tab"><%= @user.parcels.size %> Parcels</a></li>
-  <li ><a href="#posts" data-toggle="tab"><%= @user.posts.size %> Posts</a></li>
-  <li><a href="#books" data-toggle="tab">Books</a></li>
+  <li class="active"><a href="#books" data-toggle="tab"><%= @user.books.size %> Books</a></li>
 
   <li><a href="#followers" data-toggle="tab"> Followers</a></li>
   <li><a href="#following" data-toggle="tab">Following</a></li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="parcels">
-    <div id="parcels" class="transitions-enabled">
-     <% @user.parcels.each do |parcel| %>
+  <div class="tab-pane active area" id="books">
+    <div id="logs" class="transitions-enabled">
+     <% @user.books.each do |book| %>
       <div class="box panel panel-default">
         <div class="panel-body">
-          <p> <%= parcel.address %></p>
-          <p><%= parcel.address_2 %></p>
-          <p><%=parcel.city %></p>
-          <p><%=parcel.state %></p>
-          <p><%=parcel.zip %></p>
+          <div><%= link_to book do %>
+          <span class="glyphicon glyphicon-book pull-right"></span>
+           <% end %>
+          </div>
+          <p> <strong><%= book.title %></strong></p>
+          
         </div>
       </div>
       <% end %>
-    </div>
-  </div>
-  
-  <div class="tab-pane" id="posts">
-    <div id="posts" class="transitions-enabled">
-     <% @user.posts.each do |post| %>
-      <div class="box panel panel-default">
-        <div class="panel-body">
-          <p> <%= post.title %></p>
-          <p><%= post.body %></p>
-          <p><%=post.source %></p>
-            <p><a href="<%= user_path  post.user %>">
-            <span class="name"><%= @user.first_name %> <%= @user.last_name %></span></a>
-            <span class="spacing"> @<%= @user.username %></span>
-          </p>
-        </div>
-      </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="tab-pane" id="books">
-    <div class="well">
     </div>
   </div>
   <div class="tab-pane" id="followers">

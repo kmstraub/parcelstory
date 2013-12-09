@@ -1,13 +1,17 @@
 class BooksController < ApplicationController
  
   def index
-    @books = Book.all
+    @books = current_user.books
   end
 
   def show
     @book = Book.find(params[:id])
     @stories = Story.where(book_id: @book.id)
-    @story = Story.new
+    @story = Story.new(book_id: @book.id)
+    @parcel = @book.parcel_id
+
+
+
   end
 
   # GET /books/new
@@ -22,15 +26,29 @@ class BooksController < ApplicationController
 
   
   def create
-    @parcel = Parcel.find(params[:parcel_id])
     @book = Book.new(book_params)
-    @book.user = current_user
+    @book.user_id = current_user.id
     if @book.save
       redirect_to @book
     else
       render :new
     end
   end
+  def update
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to book_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+      @book = Book.find(params[:id])
+      @book.destroy
+      redirect_to root_url
+  end
+
 
   private
 

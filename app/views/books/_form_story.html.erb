@@ -1,0 +1,11 @@
+<%= form_for @story, url: "/books/#{@book.id}/stories" do |f| %>
+  <div class="form-group">
+   <%= f.text_area :body, placeholder: "Do you have a story to add to this book?", class: "form-control" %>
+  </div>
+  <div class="form-group">
+   <%= f.text_field :source, placeholder: "Add a source for this story.", class: "form-control" %>
+  </div>
+  <div class="form-group">
+   <%= f.submit "Add Story", class: "btn btn-primary" %>
+  </div>
+  <% end %>

@@ -1,0 +1,15 @@
+ <%= form_for @event, url: "/parcels/#{@parcel.id}/events" do |f| %>
+      <div class="form-group">
+       <%= f.date_field :when, placeholder: "When did this event happen? If you do not know the exact date please enter an estimate. This will help us create a basic timeline for this parcel.", class: "form-control" %>
+      </div>
+      <div class="form-group">
+       <%= f.text_area :body, placeholder: "What happend on this date?", class: "form-control" %>
+      </div>
+      <div class="form-group">
+       <%= f.text_field :source, placeholder: "Where did you find this information?", class: "form-control" %>
+      </div>
+      <div class="form-group">
+       <%= f.submit "Submit", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+

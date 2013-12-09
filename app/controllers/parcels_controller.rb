@@ -9,11 +9,27 @@ class ParcelsController < ApplicationController
     @parcel = Parcel.find(params[:id])
     @posts = Post.where(parcel_id: params[:id])
     @post = Post.new(parcel_id: params[:id])
+    @events = Event.where(parcel_id: params[:id])
+    @event = Event.new(parcel_id: params[:id])
+
   end
 
   # GET /parcels/new
   def new
     @parcel = Parcel.new
+  end
+
+  def edit
+    @parcel = Parcel.find(params[:id])
+  end
+
+  def update
+    @parcel = Parcel.find(params[:id])
+    if @parcel.update(parcel_params)
+      redirect_to parcel_path
+    else
+      render 'edit'
+    end
   end
 
   def create

@@ -1,0 +1,10 @@
+ <%= form_for @post, url: "/parcels/#{@parcel.id}/posts" do |f| %>
+      <div class="form-group">
+       <%= f.text_area :body, placeholder: "Do you have a story or fact about this parcel?", class: "form-control" %>
+      </div>
+      <div class="form-group">
+       <%= f.submit "Add Post", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+
+ 

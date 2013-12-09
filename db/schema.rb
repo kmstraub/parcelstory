@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131207001841) do
+ActiveRecord::Schema.define(version: 20131209192318) do
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -24,6 +24,23 @@ ActiveRecord::Schema.define(version: 20131207001841) do
 
   add_index "books", ["parcel_id"], name: "index_books_on_parcel_id"
   add_index "books", ["user_id"], name: "index_books_on_user_id"
+
+  create_table "events", force: true do |t|
+    t.date     "when"
+    t.text     "body"
+    t.string   "source"
+    t.integer  "parcel_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "libraries", force: true do |t|
+    t.integer  "parcel_id"
+    t.integer  "book_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "parcels", force: true do |t|
     t.string   "address"
@@ -44,9 +61,7 @@ ActiveRecord::Schema.define(version: 20131207001841) do
   add_index "parcels", ["user_id"], name: "index_parcels_on_user_id"
 
   create_table "posts", force: true do |t|
-    t.string   "title"
     t.text     "body"
-    t.string   "source"
     t.integer  "user_id",    null: false
     t.integer  "parcel_id",  null: false
     t.datetime "created_at"

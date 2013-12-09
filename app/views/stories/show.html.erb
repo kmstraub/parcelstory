@@ -1,34 +1,13 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @story.body %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @story.body %>
+      <%= link_to edit_book_story_path do %><span class="glyphicon glyphicon-pencil pull-right"></span>
+        <% end %>
+      <%= link_to book_path do %>
+        <span class="glyphicon glyphicon-book pull-right"></span>
+        <% end %>
+  </div>
+  <div class="panel-body">Source: <%= @story.source %>
+  </div>
+</div>
 
-<p>
-  <strong>Story type:</strong>
-  <%= @story.story_type %>
-</p>
-
-<p>
-  <strong>Source:</strong>
-  <%= @story.source %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @story.user %>
-</p>
-
-<p>
-  <strong>Book:</strong>
-  <%= @story.book %>
-</p>
-
-<p>
-  <strong>Parcel:</strong>
-  <%= @story.parcel %>
-</p>
-
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %>
