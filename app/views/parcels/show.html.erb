@@ -44,7 +44,15 @@
     <div id="map-canvas"></div>
   </div>
   <div class="col-xs-6 col-md-4">
-    <h2><%= @parcel.address %><%= @parcel.address_2 %><br><%= @parcel.city %>, <%= @parcel.state %> <%= @parcel.zip %><small><%= @parcel.neighborhood %></small></h2>
+    <h2><%= @parcel.address %><%= @parcel.address_2 %><br><%= @parcel.city %>, <%= @parcel.state %> <%= @parcel.zip %><small><br><%= @parcel.neighborhood %></small></h2>
+    <% if current_user.parcels.include? @parcel %>
+    <%= link_to "Remove subscription", current_user.subscriptions.find_by_parcel_id(@parcel.id), method: :delete, class: "btn btn-primary" %>
+    <% else %>
+    <%= link_to "Add subscription", subscriptions_path(parcel_id: @parcel), method: :post %>
+    <% end %>
+    <br>
+    <div class="glyphicon glyphicon-user">
+    <%= @subscribers.count %></div>
   </div>
 </div>
   <div><%= link_to edit_parcel_path(@parcel) do %>
@@ -56,7 +64,6 @@
 <ul class="nav nav-tabs">
   <li class="active"><a href="#posts" data-toggle="tab"><%= @parcel.posts.size %> Posts</a></li>
    <li><a href="#events" data-toggle="tab"> Timeline </a></li>
-  <li><a href="#followers" data-toggle="tab"> Followers</a></li>
 </ul>
 <div class="tab-content container">
   <div class="tab-pane active" id="posts">
@@ -106,10 +113,6 @@
       </div>
       <% end %>
     </div>
-  </div>
-
-  
-  <div class="tab-pane" id="followers">
   </div>
 
 </div>

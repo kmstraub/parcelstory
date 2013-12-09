@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 	has_many :stories, dependent: :destroy
 	has_many :books, dependent: :destroy
 	has_many :events
+	has_many :subscriptions
+	has_many :parcels, through: :subscriptions
 end

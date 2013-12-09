@@ -11,6 +11,7 @@ Parcelstory::Application.routes.draw do
  
 
   resources :users
+  resources :subscriptions
 
   resources :books do
     resources :stories
