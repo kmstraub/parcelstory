@@ -11,8 +11,9 @@ class ParcelsController < ApplicationController
     @post = Post.new(parcel_id: params[:id])
     @events = Event.where(parcel_id: params[:id])
     @event = Event.new(parcel_id: params[:id])
-    @subscribers= Subscription.where(parcel_id: @parcel.id)
-
+    @subscribers = Subscription.where(parcel_id: @parcel.id)
+    @books = Book.where(parcel_id: params[:id])
+    @book = Book.new(parcel_id: params[:id])
   end
 
   # GET /parcels/new

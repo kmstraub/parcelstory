@@ -1,9 +1,6 @@
 Parcelstory::Application.routes.draw do
- 
 
-  
-
-  root to: 'users#new'
+  root to: 'welcome#index'
 
   get 'sessions/new'
   post 'sessions/create'

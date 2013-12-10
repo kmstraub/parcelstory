@@ -16,7 +16,7 @@
   <div class="form-group">
     <%= f.text_area :body, placeholder: "Description of Book", class: "form-control" %>
   </div>
-  
+   <%= f.hidden_field :parcel_id %>
   <div class="form-group">
     <%= f.submit "Submit", class: "btn btn-primary" %>
   </div>

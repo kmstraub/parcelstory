@@ -1,6 +1,7 @@
 <h1>All of your books.</h1>
 <ul class="list-group">
   <% current_user.books.each do |b| %>
-    <li class="list-group-item"><%= link_to book_path(b) do %> <span class="glyphicon glyphicon-book pull-right"> <% end %></span> <%= b.title %></li>
+    <li class="list-group-item"><%= link_to book_path(b) do %> <span class="glyphicon glyphicon-book pull-right"> <% end %></span> 
+  <%= b.title %></li>
   <% end %>
 </ul>

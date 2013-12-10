@@ -48,17 +48,23 @@
     <% if current_user.parcels.include? @parcel %>
     <%= link_to "Remove subscription", current_user.subscriptions.find_by_parcel_id(@parcel.id), method: :delete, class: "btn btn-primary" %>
     <% else %>
-    <%= link_to "Add subscription", subscriptions_path(parcel_id: @parcel), method: :post %>
+    <%= link_to "Add subscription", subscriptions_path(parcel_id: @parcel), method: :post, class: "btn btn-primary" %>
     <% end %>
     <br>
     <div class="glyphicon glyphicon-user">
-    <%= @subscribers.count %></div>
+    <%= @subscribers.count %>
+    </div>
   </div>
 </div>
-  <div><%= link_to edit_parcel_path(@parcel) do %>
-       <span class="glyphicon glyphicon-pencil pull-right"></span>
+  <div class="btn-group pull-right">
+
+    <%= link_to edit_parcel_path(@parcel) do %>
+       <span class="glyphicon glyphicon-edit"></span>
         <% end %>
-  </div>
+  <%= link_to new_book_path(parcel_id: @parcel) do %>
+       <span class="glyphicon glyphicon-book">New</span>
+        <% end %>
+      </div>
 </div>
    
 <ul class="nav nav-tabs">

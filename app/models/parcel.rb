@@ -18,7 +18,8 @@ class Parcel < ActiveRecord::Base
 	end
 	belongs_to :user
 	has_many :stories, :through => :books
-	has_many :books, dependent: :destroy
+	has_many :books, :through => :libraries
+	has_many :libraries
 	has_many :subscriptions
 	has_many :users, through: :subscriptions
 end

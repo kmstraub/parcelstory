@@ -10,14 +10,14 @@ class PostsController < ApplicationController
     redirect_to parcel_path(@parcel), notice: "Post created."
   else
     flash[:error] = "Problem!"
-    redirect_to root_url
+    redirect_to parcel_path(@parcel)
     end
   end
   def destroy
     @parcel = Parcel.find(params[:parcel_id])
     @post = @parcel.posts.find(params[:id])
     @post.destroy
-    redirect_to root_url
+    redirect_to parcel_path(@parcel)
   end
   private
 

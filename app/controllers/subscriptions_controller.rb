@@ -9,7 +9,7 @@ class SubscriptionsController < ApplicationController
 	def destroy
 		@subscription = current_user.subscriptions.find(params[:id])
 		@subscription.destroy
-		redirect_to root_url, notice: "Removed subscription"
+		redirect_to current_user, notice: "Removed subscription"
 	end
 end
 
