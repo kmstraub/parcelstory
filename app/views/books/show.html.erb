@@ -19,6 +19,7 @@
 <div id="logs" class="transitions-enabled">
   <% @stories.each do |story| %>
    <div class="box panel panel-default">
+    <%= image_tag story.image.url %>
     <div class="panel-body">
       <p><%= simple_format story.body %></p>
       <p><%= simple_format story.source %></p>

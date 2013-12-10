@@ -55,3 +55,4 @@ end
  gem 'binding_of_caller'
  gem 'masonry-rails', '~> 0.2.0'
  gem 'geocoder'
+ gem 'paperclip', '~> 3.0'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209203559) do
+ActiveRecord::Schema.define(version: 20131210232415) do
 
   create_table "books", force: true do |t|
     t.string   "title"
@@ -80,6 +80,10 @@ ActiveRecord::Schema.define(version: 20131209203559) do
     t.integer  "parcel_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "stories", ["book_id"], name: "index_stories_on_book_id"

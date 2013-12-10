@@ -1,4 +1,7 @@
-<%= form_for @story, url: "/books/#{@book.id}/stories" do |f| %>
+<%= form_for @story, url: "/books/#{@book.id}/stories", html: { multipart: true } do |f| %>
+  <div class="form-group">
+    <%= f.file_field :image, placeholder: "Photo", class: "form-control" %>
+  </div>
   <div class="form-group">
    <%= f.text_area :body, placeholder: "Do you have a story to add to this book?", class: "form-control" %>
   </div>
