@@ -2,7 +2,7 @@
 <div class="jumbotron">
   <span><strong><%= @user.first_name %> <%= @user.last_name %></span></strong>
   <div><%= link_to edit_user_path(@user) do %>
-    <span class="glyphicon glyphicon-pencil pull-right"></span>
+    <span class="glyphicon glyphicon-edit pull-right"></span>
     <% end %>
   </div>
 </div>
@@ -16,7 +16,10 @@
     <div id="logs" class="transitions-enabled">
       <div id= "info" class="area panel panel-default">
         <div class="panel-body">
-          <p>Books are linked to parcels. <br>To create a new book, go to the parcel you would like to link it to.</p>
+          <p>Books are linked to parcels. <br>To create a new book, go to the parcel you would like to link it to.  <%= link_to parcels_path do %>
+          <span class="glyphicon glyphicon-globe"></span>
+           <% end %></p>
+         
         </div>
       </div>
      <% @user.books.each do |book| %>
