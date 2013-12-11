@@ -1,17 +1,14 @@
 
 <div class="panel panel-default">
-	<div class="panel-heading">
-		<%= image_tag @story.image.url (:medium) %>
-      <%= link_to edit_book_story_path do %><span class="glyphicon glyphicon-pencil pull-right"></span>
-        <% end %>
-      <%= link_to book_path do %>
-        <span class="glyphicon glyphicon-book pull-right"></span>
-        <% end %>
-  </div>
-  <div class="panel-body">
-    
-  	<%= @story.body %>
-  	Source: <%= @story.source %>
+	<div class="panel-body">
+		<p><%= image_tag @story.image.url %></p>
+		<p><%= simple_format @story.body %></p>
+		<p>Source: <%= @story.source %></p>
+	      <%= link_to edit_book_story_path do %><span class="glyphicon glyphicon-pencil pull-right"></span>
+      <% end %>
+    <%= link_to book_path do %>
+      <span class="glyphicon glyphicon-book pull-right"></span>
+      <% end %>
   </div>
 </div>
 

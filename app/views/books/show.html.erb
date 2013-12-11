@@ -19,10 +19,10 @@
 <div id="logs" class="transitions-enabled">
   <% @stories.each do |story| %>
    <div class="box panel panel-default">
-    <%= image_tag story.image.url %>
+    <%= image_tag story.image.url(:medium) %>
     <div class="panel-body">
       <p><%= simple_format story.body %></p>
-      <p><%= simple_format story.source %></p>
+      <p>Source: <%= story.source %></p>
       <div><%= link_to [story.book, story], method: :delete, data: { confirm: 'Are you sure?' } do %>
         <span class="glyphicon glyphicon-remove-sign pull-right"></span>
         <% end %>
