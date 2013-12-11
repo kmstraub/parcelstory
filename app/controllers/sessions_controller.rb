@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 		user = User.find_by(email: params[:email])
 		if user && user.authenticate(params[:password])
 			session[:user_id] = user.id
-			redirect_to root_url, notice: "Logged in!"
+			redirect_to parcels_path, notice: "Logged in!"
 		else
 			flash[:error] = "Wrong email or password"
 			redirect_to root_url
