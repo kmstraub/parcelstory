@@ -4,7 +4,7 @@
 		<p><%= image_tag @story.image.url %></p>
 		<p><%= simple_format @story.body %></p>
 		<p>Source: <%= @story.source %></p>
-	      <%= link_to edit_book_story_path do %><span class="glyphicon glyphicon-pencil pull-right"></span>
+	      <%= link_to edit_book_story_path do %><span class="glyphicon glyphicon-edit pull-right"></span>
       <% end %>
     <%= link_to book_path do %>
       <span class="glyphicon glyphicon-book pull-right"></span>

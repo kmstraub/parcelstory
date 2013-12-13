@@ -1,4 +1,7 @@
-      <%= form_for @post, url: "/parcels/#{@parcel.id}/posts" do |f| %>
+      <%= form_for @post, url: "/parcels/#{@parcel.id}/posts", html: { multipart: true } do |f| %>
+      <div class="form-group">
+        <%= f.file_field :image, placeholder: "Photo", class: "form-control" %>
+      </div>
       <div class="form-group">
         <%= f.text_field :title, placeholder: "Do you have a story, comment or fact about this parcel? Add at title.", class: "form-control" %>
       </div>

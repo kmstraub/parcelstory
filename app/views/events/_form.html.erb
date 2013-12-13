@@ -1,4 +1,4 @@
- <%= form_for @event, url: "/parcels/#{@parcel.id}/events" do |f| %>
+ <%= form_for @event, url: "/parcels/#{@parcel.id}/events", html: { multipart: true } do |f| %>
       <div class="form-group">
        <%= f.date_field :when, placeholder: "When did this event happen? If you do not know the exact date please enter an estimate. This will help us create a basic timeline for this parcel.", class: "form-control" %>
       </div>

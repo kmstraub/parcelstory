@@ -79,6 +79,7 @@
     <div id="logs" class="transitions-enabled">
       <% @posts.each do |post| %>
       <div class="box panel panel-default">
+         <%= image_tag post.image.url(:medium) %>
         <div class="panel-body">
           <div><%= link_to [post.parcel, post], method: :delete, data: { confirm: 'Are you sure?' } do %>
           <span class="glyphicon glyphicon-remove-sign pull-right"></span>
